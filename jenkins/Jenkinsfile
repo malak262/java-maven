@@ -11,7 +11,7 @@ pipeline {
     }
 
     environment {
-        SONAR_HOST_URL = 'http://13.69.247.235:9000'
+SONAR_HOST_URL = 'http://172.17.0.1:9000'
         DOCKER_CONFIG = '/tmp/.docker'
     }
 
@@ -60,7 +60,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'sonar--token', variable: 'SONAR_TOKEN')]) {
                     sh """
                         mvn sonar:sonar \
                           -Dsonar.projectKey=${env.APP_NAME} \
